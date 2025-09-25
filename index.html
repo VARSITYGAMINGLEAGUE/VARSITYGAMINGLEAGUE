@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Varsity Gaming Tournament - Season 1</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        .font-gaming { font-family: 'Orbitron', monospace; }
+        .font-body { font-family: 'Inter', sans-serif; }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #1e3a8a 0%, #7c3aed 50%, #dc2626 100%);
+        }
+        
+        .game-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background: linear-gradient(145deg, #1f2937, #111827);
+            border: 2px solid transparent;
+        }
+        
+        .game-card:hover {
+            transform: translateY(-12px) scale(1.05);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+            border-color: #3b82f6;
+        }
+        
+        .game-card.selected {
+            border-color: #10b981;
+            background: linear-gradient(145deg, #065f46, #047857);
+            transform: translateY(-8px) scale(1.02);
+        }
+        
+        .neon-glow {
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.6);
+        }
+        
+        .pulse-free {
+            animation: pulseFree 2s infinite;
+        }
+        
+        @keyframes pulseFree {
+            0%, 100% { 
+                transform: scale(1);
+                box-shadow: 0 0 20px rgba(34, 197, 94, 0.5);
+            }
+            50% { 
+                transform: scale(1.05);
+                box-shadow: 0 0 40px rgba(34, 197, 94, 0.8);
+            }
+        }
+        
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+        
+        .advantage-item {
+            transition: all 0.3s ease;
+        }
+        
+        .advantage-item:hover {
+            transform: translateX(10px);
+        }
+        
+        .disadvantage-item {
+            transition: all 0.3s ease;
+        }
+        
+        .disadvantage-item:hover {
+            transform: translateX(-10px);
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white font-body">
+    <!-- Navigation -->
+    <nav class="bg-gray-800 bg-opacity-95 backdrop-blur-sm fixed w-full z-50 border-b border-gray-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="font-gaming text-2xl font-bold text-blue-400">🏆 Varsity Gaming</div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#games" class="text-gray-300 hover:text-blue-400 transition-colors">Games</a>
+                    <a href="#advantages" class="text-gray-300 hover:text-blue-400 transition-colors">Why Join</a>
+                    <div class="bg-green-500 text-white px-4 py-2 rounded-full text-sm font-bold pulse-free">
+                        100% FREE
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient min-h-screen flex items-center justify-center relative overflow-hidden pt-16">
+        <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+        <div class="relative z-10 text-center px-4 max-w-5xl mx-auto">
+            <div class="floating mb-8">
+                <h1 class="font-gaming text-5xl md:text-7xl font-black mb-6 text-white">
+                    SEASON 1
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500">TOURNAMENT</span>
+                </h1>
+            </div>
+            <p class="text-xl md:text-2xl mb-8 text-gray-200 max-w-3xl mx-auto">
+                The first-ever Varsity Gaming Tournament is here! Choose your game, prove your skills, and make history.
+            </p>
+            <div class="bg-green-500 text-white px-8 py-4 rounded-xl text-2xl font-bold mb-8 inline-block pulse-free">
+                🎉 COMPLETELY FREE TO JOIN! 🎉
+            </div>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#games" class="bg-blue-600 hover:bg-blue-700 px-8 py-4 rounded-lg text-lg font-semibold transition-all transform hover:scale-105 neon-glow">
+                    🎮 Choose Your Game
+                </a>
+                <a href="#advantages" class="border-2 border-white hover:bg-white hover:text-gray-900 px-8 py-4 rounded-lg text-lg font-semibold transition-all">
+                    🏆 See Rewards
+                </a>
+            </div>
+        </div>
+        
+        <!-- Floating elements -->
+        <div class="absolute top-20 left-10 text-4xl floating" style="animation-delay: 0.5s;">👑</div>
+        <div class="absolute top-40 right-20 text-3xl floating" style="animation-delay: 1s;">⚔️</div>
+        <div class="absolute bottom-40 left-20 text-3xl floating" style="animation-delay: 1.5s;">🏆</div>
+        <div class="absolute bottom-20 right-10 text-4xl floating" style="animation-delay: 2s;">🎮</div>
+    </section>
+
+    <!-- Game Selection -->
+    <section id="games" class="py-20 bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-gaming text-4xl md:text-5xl font-bold mb-4">Choose Your Battlefield</h2>
+                <p class="text-xl text-gray-400 max-w-2xl mx-auto">Select the game where you'll dominate and claim victory</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="games-grid">
+                <!-- Mortal Kombat 11 -->
+                <div class="game-card rounded-xl p-6 border-2 cursor-pointer" data-game="mortal-kombat-11">
+                    <div class="w-full h-48 bg-gradient-to-br from-red-600 to-black rounded-lg mb-4 overflow-hidden">
+                        <img src="wp8762692-mortal-kombat-11-ultimate-wallpapers.jpg" alt="Mortal Kombat 11" class="w-full h-full object-cover"> 
+                        <div class="w-full h-full flex items-center justify-center text-gray-400 text-sm">
+                            Insert MK11 Image Here
+                        </div>
+                    </div>
+                    <h3 class="font-gaming text-xl font-bold mb-2">Mortal Kombat 11</h3>
+                    <p class="text-gray-400 mb-4">Brutal combat, flawless victories</p>
+                    <div class="text-center">
+                        <div class="bg-red-600 text-white px-4 py-2 rounded-lg font-semibold">
+                            FATALITY AWAITS
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Naruto Shippuden Storm 4 -->
+                <div class="game-card rounded-xl p-6 border-2 cursor-pointer" data-game="naruto-storm-4">
+                    <div class="w-full h-48 bg-gradient-to-br from-orange-500 to-yellow-600 rounded-lg mb-4 overflow-hidden">
+                        <img src="wp2418994-naruto-shippuden-ultimate-ninja-storm-4-wallpapers.jpg" alt="Naruto Storm 4" class="w-full h-full object-cover"> 
+                        <div class="w-full h-full flex items-center justify-center text-gray-400 text-sm">
+                            Insert Naruto Image Here
+                        </div>
+                    </div>
+                    <h3 class="font-gaming text-xl font-bold mb-2">Naruto Storm 4</h3>
+                    <p class="text-gray-400 mb-4">Ninja way, ultimate jutsu</p>
+                    <div class="text-center">
+                        <div class="bg-orange-600 text-white px-4 py-2 rounded-lg font-semibold">
+                            BELIEVE IT!
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FC25 -->
+                <div class="game-card rounded-xl p-6 border-2 cursor-pointer" data-game="fc25">
+                    <div class="w-full h-48 bg-gradient-to-br from-green-600 to-blue-600 rounded-lg mb-4 overflow-hidden">
+                        <img src="wp14505140-ea-sports-fc-25-wallpapers.jpg" alt="FC25" class="w-full h-full object-cover"> 
+                        <div class="w-full h-full flex items-center justify-center text-gray-400 text-sm">
+                            Insert FC25 Image Here
+                        </div>
+                    </div>
+                    <h3 class="font-gaming text-xl font-bold mb-2">FC25</h3>
+                    <p class="text-gray-400 mb-4">Beautiful game, perfect goals</p>
+                    <div class="text-center">
+                        <div class="bg-green-600 text-white px-4 py-2 rounded-lg font-semibold">
+                            GOAL MACHINE
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Call of Duty Mobile -->
+                <div class="game-card rounded-xl p-6 border-2 cursor-pointer" data-game="cod-mobile">
+                    <div class="w-full h-48 bg-gradient-to-br from-gray-700 to-red-800 rounded-lg mb-4 overflow-hidden">
+                        <img src="wp13443480-codm-pc-wallpapers.jpg" alt="Call of Duty Mobile" class="w-full h-full object-cover"> 
+                        <div class="w-full h-full flex items-center justify-center text-gray-400 text-sm">
+                            Insert COD Mobile Image Here
+                        </div>
+                    </div>
+                    <h3 class="font-gaming text-xl font-bold mb-2">Call of Duty Mobile</h3>
+                    <p class="text-gray-400 mb-4">Tactical warfare, precise shots</p>
+                    <div class="text-center">
+                        <div class="bg-gray-700 text-white px-4 py-2 rounded-lg font-semibold">
+                            LOCKED & LOADED
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dragon Ball Sparking Zero -->
+                <div class="game-card rounded-xl p-6 border-2 cursor-pointer" data-game="db-sparking-zero">
+                    <div class="w-full h-48 bg-gradient-to-br from-yellow-500 to-orange-600 rounded-lg mb-4 overflow-hidden">
+                        <img src="wp14267681-dragon-ball-sparking-zero-wallpapers.jpg" alt="Dragon Ball Sparking Zero" class="w-full h-full object-cover"> 
+                        <div class="w-full h-full flex items-center justify-center text-gray-400 text-sm">
+                            Insert DB Sparking Zero Image Here
+                        </div>
+                    </div>
+                    <h3 class="font-gaming text-xl font-bold mb-2">Dragon Ball Sparking Zero</h3>
+                    <p class="text-gray-400 mb-4">Power levels, epic battles</p>
+                    <div class="text-center">
+                        <div class="bg-yellow-600 text-white px-4 py-2 rounded-lg font-semibold">
+                            OVER 9000!
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dragon Ball Z Fighters -->
+                <div class="game-card rounded-xl p-6 border-2 cursor-pointer" data-game="dbz-fighters">
+                    <div class="w-full h-48 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg mb-4 overflow-hidden">
+                       <img src="wp4990870-dragon-ball-z-fighters-wallpapers.jpg" alt="Dragon Ball Z Fighters" class="w-full h-full object-cover"> 
+                        <div class="w-full h-full flex items-center justify-center text-gray-400 text-sm">
+                            Insert DBZ Fighters Image Here
+                        </div>
+                    </div>
+                    <h3 class="font-gaming text-xl font-bold mb-2">Dragon Ball Z Fighters</h3>
+                    <p class="text-gray-400 mb-4">Anime fighters, combo mastery</p>
+                    <div class="text-center">
+                        <div class="bg-blue-600 text-white px-4 py-2 rounded-lg font-semibold">
+                            KAMEHAMEHA!
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <div id="selection-status" class="text-gray-400 mb-4">Select a game to continue</div>
+                <button id="continue-btn" class="bg-blue-600 hover:bg-blue-700 px-8 py-4 rounded-lg text-lg font-semibold transition-all transform hover:scale-105 neon-glow opacity-50 cursor-not-allowed" disabled>
+                    Continue to Application
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Advantages & Disadvantages -->
+    <section id="advantages" class="py-20 bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Advantages -->
+                <div>
+                    <h2 class="font-gaming text-3xl md:text-4xl font-bold mb-8 text-green-400">🏆 Why You Should Join</h2>
+                    <div class="space-y-6">
+                        <div class="advantage-item bg-gradient-to-r from-green-600 to-emerald-600 rounded-xl p-6">
+                            <div class="flex items-start space-x-4">
+                                <div class="text-3xl">👑</div>
+                                <div>
+                                    <h3 class="font-bold text-lg mb-2">Crown of Glory</h3>
+                                    <p class="text-green-100">Winner takes home a trophy + crown of glory.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="advantage-item bg-gradient-to-r from-blue-600 to-cyan-600 rounded-xl p-6">
+                            <div class="flex items-start space-x-4">
+                                <div class="text-3xl">⭐</div>
+                                <div>
+                                    <h3 class="font-bold text-lg mb-2">Campus Recognition</h3>
+                                    <p class="text-blue-100">Get recognized as one of the best gamers on campus.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="advantage-item bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl p-6">
+                            <div class="flex items-start space-x-4">
+                                <div class="text-3xl">🤝</div>
+                                <div>
+                                    <h3 class="font-bold text-lg mb-2">Gaming Community</h3>
+                                    <p class="text-purple-100">Network, make new friends, and join the official Varsity Gaming Community.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="advantage-item bg-gradient-to-r from-yellow-600 to-orange-600 rounded-xl p-6">
+                            <div class="flex items-start space-x-4">
+                                <div class="text-3xl">📚</div>
+                                <div>
+                                    <h3 class="font-bold text-lg mb-2">Make History</h3>
+                                    <p class="text-yellow-100">Be part of the first-ever season — history will remember you.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Disadvantages -->
+                <div>
+                    <h2 class="font-gaming text-3xl md:text-4xl font-bold mb-8 text-red-400">⚠️ Don't Miss Out</h2>
+                    <div class="space-y-6">
+                        <div class="disadvantage-item bg-gradient-to-r from-red-600 to-red-700 rounded-xl p-6 border-l-4 border-red-400">
+                            <div class="flex items-start space-x-4">
+                                <div class="text-3xl">😢</div>
+                                <div>
+                                    <h3 class="font-bold text-lg mb-2">Watch From Sidelines</h3>
+                                    <p class="text-red-100">Miss out, and you'll only watch others rise while you sit back.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="disadvantage-item bg-gradient-to-r from-orange-600 to-red-600 rounded-xl p-6 border-l-4 border-orange-400">
+                            <div class="flex items-start space-x-4">
+                                <div class="text-3xl">❓</div>
+                                <div>
+                                    <h3 class="font-bold text-lg mb-2">Never Know Your Potential</h3>
+                                    <p class="text-orange-100">Miss out, and you'll never know if you could've been the best.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="disadvantage-item bg-gradient-to-r from-gray-600 to-gray-700 rounded-xl p-6 border-l-4 border-gray-400">
+                            <div class="flex items-start space-x-4">
+                                <div class="text-3xl">😔</div>
+                                <div>
+                                    <h3 class="font-bold text-lg mb-2">Lifetime Regret</h3>
+                                    <p class="text-gray-100">Miss out, and you'll regret not being part of Season 1 history.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 text-center">
+                        <div class="bg-green-500 text-white px-6 py-4 rounded-xl text-xl font-bold pulse-free inline-block">
+                            🎉 JOIN FOR FREE - NO COST! 🎉
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 border-t border-gray-700 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="font-gaming text-2xl font-bold text-blue-400 mb-4">🏆 Varsity Gaming Tournament</div>
+            <p class="text-gray-400 mb-4">Season 1 • Making History • 100% Free</p>
+            <div class="bg-green-500 text-white px-6 py-2 rounded-full text-sm font-bold inline-block pulse-free">
+                FREE TO JOIN - NO HIDDEN COSTS
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let selectedGame = null;
+        const gameCards = document.querySelectorAll('.game-card');
+        const continueBtn = document.getElementById('continue-btn');
+        const selectionStatus = document.getElementById('selection-status');
+
+
+        // Game selection logic
+        gameCards.forEach(card => {
+            card.addEventListener('click', function() {
+                // Remove selection from all cards
+                gameCards.forEach(c => c.classList.remove('selected'));
+                
+                // Add selection to clicked card
+                this.classList.add('selected');
+                
+                // Get game name
+                selectedGame = this.querySelector('h3').textContent;
+                
+                // Update UI
+                selectionStatus.textContent = `Selected: ${selectedGame}`;
+                selectionStatus.classList.remove('text-gray-400');
+                selectionStatus.classList.add('text-green-400');
+                
+                continueBtn.disabled = false;
+                continueBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                continueBtn.classList.add('cursor-pointer');
+                
+
+            });
+        });
+
+        // Continue button - opens external Google Form
+        continueBtn.addEventListener('click', function() {
+            if (selectedGame) {
+                // You can replace this URL with your actual Google Form link
+                window.open('https://forms.gle/QwVHAdNDfTeJQhmu5', '_blank', 'noopener,noreferrer');
+            }
+        });
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+
+
+        // Add ripple effect to buttons
+        document.querySelectorAll('button, .game-card').forEach(element => {
+            element.addEventListener('click', function(e) {
+                if (this.classList.contains('game-card')) return; // Skip for game cards
+                
+                const ripple = document.createElement('span');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                
+                ripple.style.cssText = `
+                    position: absolute;
+                    width: ${size}px;
+                    height: ${size}px;
+                    left: ${x}px;
+                    top: ${y}px;
+                    background: rgba(255, 255, 255, 0.3);
+                    border-radius: 50%;
+                    transform: scale(0);
+                    animation: ripple 0.6s linear;
+                    pointer-events: none;
+                `;
+                
+                this.style.position = 'relative';
+                this.style.overflow = 'hidden';
+                this.appendChild(ripple);
+                
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
+
+        // Add CSS for ripple animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'983a09e1508e8650',t:'MTc1ODYzMDQ3Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
